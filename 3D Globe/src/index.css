@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Space/NASA Theme - Deep space blacks with atmospheric blues */
+    --background: 220 30% 5%;
+    --foreground: 210 100% 98%;
+
+    --card: 220 28% 8%;
+    --card-foreground: 210 100% 98%;
+
+    --popover: 220 28% 8%;
+    --popover-foreground: 210 100% 98%;
+
+    /* NASA Blue - Primary brand color */
+    --primary: 214 88% 31%;
+    --primary-foreground: 210 100% 98%;
+    --primary-glow: 214 88% 51%;
+
+    /* Satellite Cyan - Secondary accent */
+    --secondary: 190 100% 50%;
+    --secondary-foreground: 220 30% 5%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 210 15% 65%;
+
+    /* Environmental Green - Success/Good AQI */
+    --accent: 150 100% 50%;
+    --accent-foreground: 220 30% 5%;
+
+    /* Warning/Danger colors for AQI levels */
+    --warning: 25 100% 60%;
+    --warning-foreground: 220 30% 5%;
+    
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 210 100% 98%;
+
+    /* AQI Color Scale */
+    --aqi-good: 120 100% 40%;
+    --aqi-moderate: 48 100% 50%;
+    --aqi-unhealthy-sensitive: 30 100% 50%;
+    --aqi-unhealthy: 15 100% 50%;
+    --aqi-very-unhealthy: 330 100% 45%;
+    --aqi-hazardous: 0 60% 30%;
+
+    --border: 220 25% 15%;
+    --input: 220 25% 15%;
+    --ring: 214 88% 51%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-space: linear-gradient(180deg, hsl(220, 30%, 5%) 0%, hsl(230, 40%, 8%) 100%);
+    --gradient-atmosphere: linear-gradient(135deg, hsl(214, 88%, 31%) 0%, hsl(190, 100%, 50%) 100%);
+    --gradient-glow: radial-gradient(circle, hsl(214, 88%, 51% / 0.2) 0%, transparent 70%);
+
+    /* Shadows with glow effects */
+    --shadow-glow: 0 0 30px hsl(214, 88%, 51% / 0.3);
+    --shadow-card: 0 10px 40px hsl(220, 30%, 3% / 0.5);
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(180deg, hsl(220, 30%, 5%) 0%, hsl(230, 40%, 8%) 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .glow {
+    text-shadow: 0 0 20px hsl(var(--primary-glow) / 0.5);
+  }
+
+  .card-glow {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.2);
+  }
+}
