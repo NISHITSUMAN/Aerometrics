@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Space Theme - Deep cosmic colors */
+    --background: 230 35% 7%;
+    --foreground: 180 100% 90%;
+
+    --card: 230 30% 10%;
+    --card-foreground: 180 100% 90%;
+
+    --popover: 230 30% 10%;
+    --popover-foreground: 180 100% 90%;
+
+    /* Cyan/Blue primary for Earth glow */
+    --primary: 190 95% 55%;
+    --primary-foreground: 230 35% 7%;
+
+    /* Purple accent for satellites */
+    --secondary: 270 80% 60%;
+    --secondary-foreground: 180 100% 90%;
+
+    --muted: 230 25% 15%;
+    --muted-foreground: 180 50% 60%;
+
+    --accent: 270 80% 60%;
+    --accent-foreground: 180 100% 90%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 180 100% 90%;
+
+    --border: 230 30% 20%;
+    --input: 230 30% 20%;
+    --ring: 190 95% 55%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-space: linear-gradient(180deg, hsl(230 35% 7%) 0%, hsl(250 40% 10%) 100%);
+    --gradient-glow: radial-gradient(circle, hsl(190 95% 55% / 0.3) 0%, transparent 70%);
+    --gradient-panel: linear-gradient(135deg, hsl(230 30% 10% / 0.7) 0%, hsl(230 30% 12% / 0.5) 100%);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsl(190 95% 55% / 0.3);
+    --shadow-panel: 0 8px 32px hsl(230 35% 5% / 0.5);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-space);
+    min-height: 100vh;
+  }
+  
+  /* Glass morphism utility */
+  .glass-panel {
+    background: var(--gradient-panel);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-panel);
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+}
+
